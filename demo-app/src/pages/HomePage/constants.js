@@ -18,7 +18,7 @@ export const validationSchema = Yup.object({
   name: requiredTextField("Name"),
   dob: requiredTextField("Date of Birth"),
   address: requiredTextField("Address"),
-  postcode: minMaxLengthValidation("Postcode", 6),
+  postcode: minMaxLengthValidation("Postcode", 6, 6),
   country: requiredTextField("Country"),
 });
 export const avatarColors = [
