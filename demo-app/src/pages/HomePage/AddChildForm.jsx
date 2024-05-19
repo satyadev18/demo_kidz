@@ -17,8 +17,9 @@ const AddChildForm = () => {
     dispatch(addUserMiddleware(values)).then(() => {
       setTimeout(async () => {
         await dispatch(resetUser(false));
+
         await resetForm();
-      }, 1000);
+      }, 2000);
     });
   };
 
@@ -107,7 +108,7 @@ const AddChildForm = () => {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="p" fontWeight={"600"}>
-                  Address Detail
+                  Address Detail <span className="text-danger">*</span>
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6} marginTop={"5px"}>
