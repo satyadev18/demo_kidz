@@ -25,7 +25,7 @@ const FormInput = ({
       )}
 
       <Field name={nameText} className="form-input">
-        {({ field, form }) => (
+        {({ field }) => (
           <TextField
             {...field}
             style={{ padding: "2px" }}
@@ -35,7 +35,6 @@ const FormInput = ({
             sx={{
               input: {
                 "&::placeholder": {
-                  // <----- Add this.
                   opacity: 0.3,
                 },
               },

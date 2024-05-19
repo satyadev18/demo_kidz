@@ -5,16 +5,11 @@ import { logout, shopping_cart, logo } from "../../utils/images";
 const Navbar = () => {
   return (
     <Box
-      // position="fixed"
-      // top={0}
-      // left={0}
-      // right={0}
       display="flex"
       justifyContent="space-between"
       padding="20px 48px"
       bgcolor="white"
       zIndex={1000}
-      boxShadow={" rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;"}
     >
       <Box>
         <img src={logo} />

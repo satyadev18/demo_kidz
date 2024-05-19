@@ -7,10 +7,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Grid, Typography, Box, Fab } from "@mui/material";
 import { back, true_icon } from "../../utils/images";
 import SelectAvatar from "./SelectAvatar";
+import CountrySelect from "../../components/CountrySelect";
 
 const AddChildForm = () => {
   const dispatch = useDispatch();
   const [bgColor, setBgColor] = useState("");
+
   const handleUserSubmit = (values, { resetForm }) => {
     dispatch(addUserMiddleware(values)).then(() => {
       setTimeout(async () => {
@@ -36,13 +38,14 @@ const AddChildForm = () => {
           "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
       }}
     >
+      {/* avatar component */}
       <SelectAvatar />
       <Formik
         initialValues={initialValues}
         onSubmit={handleUserSubmit}
         validationSchema={validationSchema}
       >
-        {({ isValid, touched, setFieldValue, values }) => (
+        {({ isValid, touched, values, setFieldValue }) => (
           <Form>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -50,7 +53,7 @@ const AddChildForm = () => {
                   inputType="text"
                   nameText="name"
                   labelText="Name"
-                  placeholder="Name"
+                  placeholder="Arthur Duncan"
                   required={true}
                 />
               </Grid>
@@ -85,17 +88,15 @@ const AddChildForm = () => {
               </Grid>
 
               <Grid item xs={12} sm={6}>
-                {" "}
                 <FormInput
                   inputType="text"
                   nameText="firstaid"
-                  labelText="First Aid"
-                  placeholder="First Aid"
+                  labelText="First Aid Information"
+                  placeholder="Allergies?"
                   required={false}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                {" "}
                 <FormInput
                   inputType="date"
                   nameText="dob"
@@ -109,12 +110,9 @@ const AddChildForm = () => {
                   Address Detail
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormInput
-                  inputType="text"
-                  nameText="country"
-                  placeholder="Country"
-                  required={true}
+              <Grid item xs={12} sm={6} marginTop={"4px"}>
+                <CountrySelect
+                  handleChange={(value) => setFieldValue("country", value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
